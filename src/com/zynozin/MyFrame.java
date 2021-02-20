@@ -23,11 +23,12 @@ public class MyFrame extends JFrame {
         this.add(barPanel, BorderLayout.NORTH);
         this.add(mainPanel);
         this.setUndecorated(true);
+        this.setBackground(new Color(0, 0, 0, 100));
         this.setSize(WIDTH, HEIGHT);
         this.setLocationRelativeTo(null);
-        this.setBackground(new Color(132, 0, 120, 0));
         this.setVisible(true);
         this.setIconImage(mainImage);
+
     }
 
     private class FrameDragListener extends MouseAdapter {
@@ -48,8 +49,13 @@ public class MyFrame extends JFrame {
         }
 
         public void mouseDragged(MouseEvent e) {
-            Point currCoords = e.getLocationOnScreen();
-            frame.setLocation(currCoords.x - mouseDownCompCoords.x, currCoords.y - mouseDownCompCoords.y);
+            if (mouseDownCompCoords.x >= 0 && mouseDownCompCoords.x <= WIDTH) {
+                if (mouseDownCompCoords.y >= 0 && mouseDownCompCoords.y <= 35) {
+                    Point currCoords = e.getLocationOnScreen();
+                    frame.setLocation(currCoords.x - mouseDownCompCoords.x, currCoords.y - mouseDownCompCoords.y);
+                }
+            }
+
         }
     }
 
