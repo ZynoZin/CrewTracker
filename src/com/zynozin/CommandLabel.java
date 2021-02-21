@@ -1,24 +1,28 @@
 package com.zynozin;
 
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
+import java.io.IOException;
 
 public class CommandLabel extends JLabel implements MouseListener {
     private String title;
     private Character[] characters;
     private DragPanel dragPanel;
-    private MainPanel mainPanel;
+    public static MainPanel mainPanel;
     private JFrame frame;
     private final int WIDTH = 1200;
     private final int HEIGHT = 900;
+    private NotesArea notesArea;
+    private AudioProvider audioProvider = new AudioProvider();
 
-
-    public CommandLabel(String title, Character[] characters, JFrame frame, MainPanel mainPanel) {
+    public CommandLabel(String title, JFrame frame, MainPanel mainPanel, NotesArea notesArea) {
+        this.notesArea = notesArea;
         this.title = title;
         this.frame = frame;
-        this.characters = characters;
         this.mainPanel = mainPanel;
         this.setText(title);
         this.setFont(new Font("Pink Chicken", Font.PLAIN, 20));
@@ -31,13 +35,9 @@ public class CommandLabel extends JLabel implements MouseListener {
         this.setBackground(new Color(213, 128, 255));
     }
 
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        for (Character character : this.characters)
-            character.imageIcon.paintIcon(this.dragPanel, g, (int) character.imageCorner.getX(), (int) character.imageCorner.getY());
+    public static void setMainPanel(MainPanel mainPanel) {
+        CommandLabel.mainPanel = mainPanel;
     }
-    
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -46,11 +46,23 @@ public class CommandLabel extends JLabel implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
+        this.setBackground(new Color(143, 0, 179));
         if (this.title == "Reset Positions") {
             this.mainPanel.setVisible(false);
             MainPanel mainPanel = new MainPanel(WIDTH, HEIGHT - 200);
-            this.mainPanel = mainPanel;
+            setMainPanel(mainPanel);
             this.frame.add(this.mainPanel, BorderLayout.CENTER);
+        } else if (this.title == "Clear Notes") {
+            this.notesArea.setText("");
+        }
+        try {
+            audioProvider.makeSound("audio/select.wav");
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+            unsupportedAudioFileException.printStackTrace();
+        } catch (LineUnavailableException lineUnavailableException) {
+            lineUnavailableException.printStackTrace();
         }
     }
 
@@ -62,7 +74,15 @@ public class CommandLabel extends JLabel implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent e) {
         this.setBackground(new Color(245, 204, 255));
-
+        try {
+            audioProvider.makeSound("audio/scroll.wav");
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+            unsupportedAudioFileException.printStackTrace();
+        } catch (LineUnavailableException lineUnavailableException) {
+            lineUnavailableException.printStackTrace();
+        }
     }
 
     @Override

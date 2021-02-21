@@ -1,10 +1,13 @@
 package com.zynozin;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.io.IOException;
 
 public class MapNames extends JLabel implements MouseListener {
     private String title;
@@ -12,6 +15,7 @@ public class MapNames extends JLabel implements MouseListener {
     private ImageIcon skeldIcon = new ImageIcon("images/skeldMap.png");
     private ImageIcon polusIcon = new ImageIcon("images/polusMap.png");
     private ImageIcon mirahIcon = new ImageIcon("images/mirahMap.png");
+    private AudioProvider audioProvider = new AudioProvider();
 
     public MapNames(String title, JLabel mapDisplay) {
         this.title = title;
@@ -37,6 +41,15 @@ public class MapNames extends JLabel implements MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
         this.setBackground(new Color(143, 0, 179));
+        try {
+            audioProvider.makeSound("audio/select.wav");
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+            unsupportedAudioFileException.printStackTrace();
+        } catch (LineUnavailableException lineUnavailableException) {
+            lineUnavailableException.printStackTrace();
+        }
         if (this.title == "Skeld") {
             this.mapDisplay.setVisible(true);
             this.mapDisplay.setIcon(skeldIcon);
@@ -58,7 +71,15 @@ public class MapNames extends JLabel implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent e) {
         this.setBackground(new Color(245, 204, 255));
-
+        try {
+            audioProvider.makeSound("audio/scroll.wav");
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+            unsupportedAudioFileException.printStackTrace();
+        } catch (LineUnavailableException lineUnavailableException) {
+            lineUnavailableException.printStackTrace();
+        }
     }
 
     @Override

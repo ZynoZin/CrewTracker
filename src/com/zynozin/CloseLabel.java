@@ -1,13 +1,18 @@
 package com.zynozin;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 
 public class CloseLabel extends JLabel implements MouseListener {
     private JFrame frame;
     private ImageIcon closeIcon = new ImageIcon("images/close.png");
+    private AudioProvider audioProvider = new AudioProvider();
+
 
     public CloseLabel(JFrame frame) {
         this.frame = frame;
@@ -35,6 +40,15 @@ public class CloseLabel extends JLabel implements MouseListener {
     public void mouseEntered(MouseEvent e) {
         this.setOpaque(true);
         this.setBackground(Color.RED);
+        try {
+            audioProvider.makeSound("audio/scroll.wav");
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+            unsupportedAudioFileException.printStackTrace();
+        } catch (LineUnavailableException lineUnavailableException) {
+            lineUnavailableException.printStackTrace();
+        }
     }
 
     @Override

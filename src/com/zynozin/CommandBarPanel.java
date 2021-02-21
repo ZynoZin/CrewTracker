@@ -7,9 +7,9 @@ public class CommandBarPanel extends JPanel {
     private CloseLabel closeLabel;
     private HideLabel hideLabel;
     private JFrame frame;
-    private JLayeredPane mainPanel;
+    private MainPanel mainPanel;
 
-    public CommandBarPanel(JFrame frame, JLayeredPane mainPanel, JPanel footerPanel) {
+    public CommandBarPanel(JFrame frame, MainPanel mainPanel, JPanel footerPanel) {
         this.frame = frame;
         this.mainPanel = mainPanel;
         closeLabel = new CloseLabel(this.frame);

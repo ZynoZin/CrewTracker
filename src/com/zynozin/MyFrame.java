@@ -15,8 +15,8 @@ public class MyFrame extends JFrame {
     private ImageIcon mainIcon = new ImageIcon("images/mainIconBar.png");
     private Image image = mainIcon.getImage();
     private Image mainImage = image.getScaledInstance(500, 500, Image.SCALE_SMOOTH);
-    private FooterPanel footerPanel = new FooterPanel(WIDTH, mainPanel.dragPanel.characters, this, mainPanel);
-    private BarPanel barPanel = new BarPanel(this, this.mainPanel, this.footerPanel);
+    private FooterPanel footerPanel = new FooterPanel(WIDTH, this, mainPanel);
+    private BarPanel barPanel = new BarPanel(this, footerPanel.commandPanel.resetPositions.mainPanel, this.footerPanel);
 
     public MyFrame() {
         this.addMouseListener(frameDragListener);

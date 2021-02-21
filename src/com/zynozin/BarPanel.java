@@ -9,7 +9,7 @@ public class BarPanel extends JPanel {
     private CommandBarPanel commandBarPanel;
     private TitleLabel titleLabel;
 
-    public BarPanel(JFrame frame, JLayeredPane mainPanel, JPanel footerPanel) {
+    public BarPanel(JFrame frame, MainPanel mainPanel, JPanel footerPanel) {
         commandBarPanel = new CommandBarPanel(frame, mainPanel, footerPanel);
         titleLabel = new TitleLabel();
         this.setLayout(new BorderLayout());
