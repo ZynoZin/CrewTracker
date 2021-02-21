@@ -9,13 +9,13 @@ public class CommandBarPanel extends JPanel {
     private JFrame frame;
     private JLayeredPane mainPanel;
 
-    public CommandBarPanel(JFrame frame, JLayeredPane mainPanel) {
+    public CommandBarPanel(JFrame frame, JLayeredPane mainPanel, JPanel footerPanel) {
         this.frame = frame;
         this.mainPanel = mainPanel;
         closeLabel = new CloseLabel(this.frame);
-        hideLabel = new HideLabel(this.mainPanel, this.frame);
+        hideLabel = new HideLabel(this.mainPanel, this.frame, footerPanel);
         this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-        this.setBackground(new Color(0, 0, 0));
+        this.setBackground(new Color(77, 0, 153));
         this.add(hideLabel);
         this.add(closeLabel);
         this.setAlignmentX(CENTER_ALIGNMENT);

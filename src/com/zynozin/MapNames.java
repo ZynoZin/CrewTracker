@@ -13,7 +13,7 @@ public class MapNames extends JLabel implements MouseListener {
     private ImageIcon polusIcon = new ImageIcon("images/polusMap.png");
     private ImageIcon mirahIcon = new ImageIcon("images/mirahMap.png");
 
-    public MapNames(String title, int width, JLabel mapDisplay) {
+    public MapNames(String title, JLabel mapDisplay) {
         this.title = title;
         this.setText(title);
         this.mapDisplay = mapDisplay;

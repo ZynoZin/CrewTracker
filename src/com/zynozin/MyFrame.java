@@ -9,25 +9,31 @@ import java.awt.event.MouseMotionAdapter;
 
 public class MyFrame extends JFrame {
     private final int WIDTH = 1200;
-    private final int HEIGHT = 1000;
+    private final int HEIGHT = 900;
     private FrameDragListener frameDragListener = new FrameDragListener(this);
-    private MainPanel mainPanel = new MainPanel(WIDTH, 965);
-    private BarPanel barPanel = new BarPanel(this, this.mainPanel);
+    private MainPanel mainPanel = new MainPanel(WIDTH, HEIGHT - 200);
     private ImageIcon mainIcon = new ImageIcon("images/mainIconBar.png");
     private Image image = mainIcon.getImage();
     private Image mainImage = image.getScaledInstance(500, 500, Image.SCALE_SMOOTH);
+    private FooterPanel footerPanel = new FooterPanel(WIDTH, mainPanel.dragPanel.characters, this, mainPanel);
+    private BarPanel barPanel = new BarPanel(this, this.mainPanel, this.footerPanel);
 
     public MyFrame() {
         this.addMouseListener(frameDragListener);
         this.addMouseMotionListener(frameDragListener);
+        this.setLayout(new BorderLayout());
         this.add(barPanel, BorderLayout.NORTH);
-        this.add(mainPanel);
+        this.add(mainPanel, BorderLayout.CENTER);
+        this.add(footerPanel, BorderLayout.SOUTH);
         this.setUndecorated(true);
-        this.setBackground(new Color(0, 0, 0, 100));
+        this.setBackground(new Color(140, 26, 255, 100));
         this.setSize(WIDTH, HEIGHT);
         this.setLocationRelativeTo(null);
+        this.setFocusable(true);
         this.setVisible(true);
+        this.setAlwaysOnTop(true);
         this.setIconImage(mainImage);
+        this.pack();
 
     }
 

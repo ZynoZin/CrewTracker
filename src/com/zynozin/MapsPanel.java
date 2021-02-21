@@ -13,10 +13,10 @@ public class MapsPanel extends JPanel {
 
     public MapsPanel(int width, JLabel mapsDisplayLabel) {
         this.setAlignmentY(30);
-        mirahMap = new MapNames("Mirah", width, mapsDisplayLabel);
-        skeldMap = new MapNames("Skeld", width, mapsDisplayLabel);
-        polusMap = new MapNames("Polus", width, mapsDisplayLabel);
-        this.setLayout(new FlowLayout(FlowLayout.TRAILING, 0, 15));
+        mirahMap = new MapNames("Mirah", mapsDisplayLabel);
+        skeldMap = new MapNames("Skeld", mapsDisplayLabel);
+        polusMap = new MapNames("Polus", mapsDisplayLabel);
+        this.setLayout(new FlowLayout(FlowLayout.TRAILING, 0, 10));
         this.add(polusMap);
         this.add(skeldMap);
         this.add(mirahMap);

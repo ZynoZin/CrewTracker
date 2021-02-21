@@ -11,9 +11,11 @@ public class HideLabel extends JLabel implements MouseListener {
     private ImageIcon hideIcon = new ImageIcon("images/resize.png");
     private ImageIcon unHideIcon = new ImageIcon("images/unhide.png");
     private Boolean isHidden = false;
+    private JPanel footerPanel;
 
-    public HideLabel(JLayeredPane mainPanel, JFrame frame) {
+    public HideLabel(JLayeredPane mainPanel, JFrame frame, JPanel footerPanel) {
         this.frame = frame;
+        this.footerPanel = footerPanel;
         this.mainPanel = mainPanel;
         this.setIcon(getCommandIcon());
         this.addMouseListener(this);
@@ -38,12 +40,14 @@ public class HideLabel extends JLabel implements MouseListener {
     public void mousePressed(MouseEvent e) {
         if (!this.isHidden) {
             mainPanel.setVisible(false);
-            this.frame.setBackground(new Color(0, 0, 0, 0));
+            this.footerPanel.setVisible(false);
+            this.frame.setBackground(new Color(140, 26, 255, 0));
             this.isHidden = true;
             this.setIcon(getCommandIcon());
         } else {
             mainPanel.setVisible(true);
-            this.frame.setBackground(new Color(0, 0, 0, 100));
+            this.footerPanel.setVisible(true);
+            this.frame.setBackground(new Color(140, 26, 255, 100));
             this.isHidden = false;
             this.setIcon(getCommandIcon());
         }
@@ -62,7 +66,7 @@ public class HideLabel extends JLabel implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
-        this.setBackground(new Color(0, 0, 0));
+        this.setBackground(new Color(77, 0, 153));
     }
 }
 

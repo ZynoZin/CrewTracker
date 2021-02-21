@@ -22,7 +22,7 @@ public class MapsPicker extends JPanel {
     private JLabel mapsPickerTite() {
         JLabel label = new JLabel();
         label.setText("Choose a Map:");
-        label.setForeground(new Color(230, 179, 255));
+        label.setForeground(new Color(255, 255, 255));
         label.setOpaque(false);
         label.setFont(new Font("Pink Chicken", Font.BOLD, 60));
         label.setPreferredSize(new Dimension(400, 60));

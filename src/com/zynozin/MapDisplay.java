@@ -19,10 +19,10 @@ public class MapDisplay extends JLayeredPane {
         mapsDisplayLabel.setOpaque(false);
         this.setLayout(new BorderLayout());
         this.add(mapsDisplayLabel, BorderLayout.NORTH);
-        this.setPreferredSize(new Dimension(width - 20, 895));
+        this.setPreferredSize(new Dimension(width - 20, 795));
         this.setBounds(10, 105, width - 10, 895);
         this.setOpaque(false);
-     
+
     }
 
 
