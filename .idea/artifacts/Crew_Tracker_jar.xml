@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Crew Tracker:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Crew_Tracker_jar</output-path>
+    <root id="archive" name="Crew Tracker.jar">
+      <element id="module-output" name="Crew Tracker" />
+    </root>
+  </artifact>
+</component>

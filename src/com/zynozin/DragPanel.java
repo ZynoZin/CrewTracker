@@ -23,18 +23,6 @@ public class DragPanel extends JPanel {
 
     public DragPanel(Character[] characters) {
         this.characters = reset();
-        this.characters[0] = redCharacter;
-        this.characters[1] = blackCharacter;
-        this.characters[2] = whiteCharacter;
-        this.characters[3] = yellowCharacter;
-        this.characters[4] = greenCharacter;
-        this.characters[5] = blueCharacter;
-        this.characters[6] = pinkCharacter;
-        this.characters[7] = purpleCharacter;
-        this.characters[8] = cyanCharacter;
-        this.characters[9] = limeCharacter;
-        this.characters[10] = orangeCharacter;
-        this.characters[11] = brownCharacter;
         ClickListener clickListener = new ClickListener();
         DragLisetener dragLisetener = new DragLisetener();
         this.addMouseListener(clickListener);
@@ -45,19 +33,7 @@ public class DragPanel extends JPanel {
     }
 
     public Character[] reset() {
-        Character[] newCharacters = new Character[12];
-        newCharacters[0] = redCharacter;
-        newCharacters[1] = blackCharacter;
-        newCharacters[2] = whiteCharacter;
-        newCharacters[3] = yellowCharacter;
-        newCharacters[4] = greenCharacter;
-        newCharacters[5] = blueCharacter;
-        newCharacters[6] = pinkCharacter;
-        newCharacters[7] = purpleCharacter;
-        newCharacters[8] = cyanCharacter;
-        newCharacters[9] = limeCharacter;
-        newCharacters[10] = orangeCharacter;
-        newCharacters[11] = brownCharacter;
+        Character[] newCharacters = new Character[]{this.redCharacter, this.blackCharacter, this.whiteCharacter, this.yellowCharacter, this.greenCharacter, this.blueCharacter, this.pinkCharacter, this.purpleCharacter, this.cyanCharacter, this.limeCharacter, this.orangeCharacter, this.brownCharacter};
         return newCharacters;
     }
 
