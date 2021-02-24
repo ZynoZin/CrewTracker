@@ -8,6 +8,7 @@ public class MapsPicker extends JPanel {
 
     MapsPanel mapsPanel;
     JLabel chooseYourMap;
+    private Font font = Main.getFontforApp(60f);
 
     public MapsPicker(int width, JLabel mapsDisplayLabel) {
         mapsPanel = new MapsPanel(width, mapsDisplayLabel);
@@ -24,7 +25,7 @@ public class MapsPicker extends JPanel {
         label.setText("Choose a Map:");
         label.setForeground(new Color(255, 255, 255));
         label.setOpaque(false);
-        label.setFont(new Font("Pink Chicken", Font.BOLD, 60));
+        label.setFont(font);
         label.setPreferredSize(new Dimension(400, 60));
         label.setHorizontalAlignment(SwingConstants.CENTER);
         return label;

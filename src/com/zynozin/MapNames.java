@@ -16,13 +16,14 @@ public class MapNames extends JLabel implements MouseListener {
     private ImageIcon polusIcon = new ImageIcon("images/polusMap.png");
     private ImageIcon mirahIcon = new ImageIcon("images/mirahMap.png");
     private AudioProvider audioProvider = new AudioProvider();
+    private Font font = Main.getFontforApp(35f);
 
     public MapNames(String title, JLabel mapDisplay) {
         this.title = title;
         this.setText(title);
         this.mapDisplay = mapDisplay;
         this.mapDisplay.setVisible(true);
-        this.setFont(new Font("Pink Chicken", Font.PLAIN, 35));
+        this.setFont(font);
         this.setForeground(Color.white);
         this.setOpaque(true);
         this.setPreferredSize(new Dimension(100, 60));

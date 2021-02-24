@@ -19,7 +19,7 @@ public class CommandLabel extends JLabel implements MouseListener {
     private NotesArea notesArea;
     private AudioProvider audioProvider = new AudioProvider();
     private VolumeLabel volumeLabel;
-    private BarPanel barPanel;
+    private Font font = Main.getFontforApp(20f);
 
     public CommandLabel(String title, JFrame frame, MainPanel mainPanel, NotesArea notesArea) {
         this.notesArea = notesArea;
@@ -28,7 +28,7 @@ public class CommandLabel extends JLabel implements MouseListener {
         this.mainPanel = mainPanel;
         this.volumeLabel = getVolumeLabel();
         this.setText(title);
-        this.setFont(new Font("Pink Chicken", Font.PLAIN, 20));
+        this.setFont(font);
         this.setForeground(Color.white);
         this.setOpaque(true);
         this.setPreferredSize(new Dimension(150, 60));

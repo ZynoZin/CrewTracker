@@ -8,17 +8,17 @@ import java.awt.event.MouseMotionAdapter;
 
 public class DragPanel extends JPanel {
     Character redCharacter = new Character(10, 570, "images/red.png");
-    Character blackCharacter = new Character(60, 570, "images/black.png");
-    Character whiteCharacter = new Character(110, 570, "images/white.png");
-    Character greenCharacter = new Character(160, 570, "images/green.png");
-    Character yellowCharacter = new Character(210, 570, "images/yellow.png");
-    Character blueCharacter = new Character(260, 570, "images/blue.png");
-    Character purpleCharacter = new Character(310, 570, "images/purple.png");
-    Character cyanCharacter = new Character(360, 570, "images/cyan.png");
-    Character limeCharacter = new Character(410, 570, "images/lime.png");
-    Character orangeCharacter = new Character(460, 570, "images/orange.png");
-    Character brownCharacter = new Character(510, 570, "images/brown.png");
-    Character pinkCharacter = new Character(560, 570, "images/pink.png");
+    Character blackCharacter = new Character(110, 570, "images/black.png");
+    Character whiteCharacter = new Character(210, 570, "images/white.png");
+    Character greenCharacter = new Character(310, 570, "images/green.png");
+    Character yellowCharacter = new Character(410, 570, "images/yellow.png");
+    Character blueCharacter = new Character(510, 570, "images/blue.png");
+    Character purpleCharacter = new Character(610, 570, "images/purple.png");
+    Character cyanCharacter = new Character(710, 570, "images/cyan.png");
+    Character limeCharacter = new Character(810, 570, "images/lime.png");
+    Character orangeCharacter = new Character(910, 570, "images/orange.png");
+    Character brownCharacter = new Character(1010, 570, "images/brown.png");
+    Character pinkCharacter = new Character(1110, 570, "images/pink.png");
     public Character[] characters;
 
     public DragPanel(Character[] characters) {
@@ -67,16 +67,20 @@ public class DragPanel extends JPanel {
     private class DragLisetener extends MouseMotionAdapter {
         public void mouseDragged(MouseEvent e) {
             for (Character character : characters) {
-                if (character.prevPoint.x >= character.imageCorner.x && character.prevPoint.x <= character.imageCorner.x + 48) {
-                    if (character.prevPoint.y >= character.imageCorner.y && character.prevPoint.y <= character.imageCorner.y + 48) {
-                        Point currentPoint = e.getPoint();
-                        character.imageCorner.translate(
-                                currentPoint.x - character.prevPoint.x,
-                                currentPoint.y - character.prevPoint.y
-                        );
-                        character.prevPoint = currentPoint;
-                        if (character.imageCorner.x >= 0 && character.imageCorner.x <= 1350 && character.imageCorner.y >= 0 && character.imageCorner.y <= 570)
-                            repaint();
+                if (e.getPoint().x >= 50 && e.getPoint().x <= 1150 && e.getPoint().y >= 30 && e.getPoint().y <= 580) {
+                    if (character.prevPoint.x >= character.imageCorner.x && character.prevPoint.x <= character.imageCorner.x + 38) {
+                        if (character.prevPoint.y >= character.imageCorner.y && character.prevPoint.y <= character.imageCorner.y + 38) {
+                            if (character.imageCorner.x >= 0 && character.imageCorner.x <= 1170 && character.imageCorner.y >= 0 && character.imageCorner.y <= 600) {
+                                Point currentPoint = e.getPoint();
+                                character.imageCorner.translate(
+                                        currentPoint.x - character.prevPoint.x,
+                                        currentPoint.y - character.prevPoint.y
+                                );
+                                character.prevPoint = currentPoint;
+
+                                repaint();
+                            }
+                        }
                     }
                 }
 

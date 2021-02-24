@@ -5,6 +5,7 @@ import java.awt.*;
 
 public class NotesArea extends JTextArea {
     ModernScrollPane modernScrollPane;
+    private Font font = Main.getFontforApp(35f);
 
     public NotesArea() {
         this.setText("Write your Notes...");
@@ -13,7 +14,7 @@ public class NotesArea extends JTextArea {
         this.setBounds(10, 750, 750, 170);
         this.setWrapStyleWord(true);
         this.setForeground(Color.white);
-        this.setFont(new Font("Pink Chicken", Font.BOLD, 30));
+        this.setFont(font);
         this.setBackground(new Color(31, 0, 77));
         this.setCaretColor(Color.white);
     }
