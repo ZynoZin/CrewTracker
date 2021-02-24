@@ -6,7 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class BarPanel extends JPanel {
-    private CommandBarPanel commandBarPanel;
+    public CommandBarPanel commandBarPanel;
     private TitleLabel titleLabel;
 
     public BarPanel(JFrame frame, MainPanel mainPanel, JPanel footerPanel) {

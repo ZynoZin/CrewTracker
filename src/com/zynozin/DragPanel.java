@@ -33,7 +33,10 @@ public class DragPanel extends JPanel {
     }
 
     public Character[] reset() {
-        Character[] newCharacters = new Character[]{this.redCharacter, this.blackCharacter, this.whiteCharacter, this.yellowCharacter, this.greenCharacter, this.blueCharacter, this.pinkCharacter, this.purpleCharacter, this.cyanCharacter, this.limeCharacter, this.orangeCharacter, this.brownCharacter};
+        Character[] newCharacters = new Character[]{this.redCharacter, this.blackCharacter, this.whiteCharacter,
+                this.yellowCharacter, this.greenCharacter, this.blueCharacter, this.pinkCharacter, this.purpleCharacter,
+                this.cyanCharacter, this.limeCharacter, this.orangeCharacter, this.brownCharacter};
+
         return newCharacters;
     }
 

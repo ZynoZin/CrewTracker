@@ -18,14 +18,13 @@ public class MainPanel extends JLayeredPane {
         this.add(dragPanel);
         this.add(mapDisplay);
         this.add(mapsPicker, BorderLayout.NORTH);
-
-
         this.setBounds(0, 40, width, height);
         this.setPreferredSize(new Dimension(width, height));
         this.setOpaque(false);
         this.setBackground(new Color(0, 0, 0, 100));
 
     }
+
 
     public Character[] reset() {
         Character[] newCharacters = new Character[12];

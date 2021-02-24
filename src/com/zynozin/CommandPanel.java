@@ -7,7 +7,7 @@ import java.awt.event.MouseListener;
 
 public class CommandPanel extends JPanel {
     public CommandLabel resetPositions;
-    private CommandLabel clearNotes;
+    public CommandLabel clearNotes;
 
     public CommandPanel(int height, JFrame frame, MainPanel mainPanel, NotesArea notesArea) {
         resetPositions = new CommandLabel("Reset Positions", frame, mainPanel, notesArea);

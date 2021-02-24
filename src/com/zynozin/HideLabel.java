@@ -16,11 +16,13 @@ public class HideLabel extends JLabel implements MouseListener {
     private Boolean isHidden = false;
     private JPanel footerPanel;
     private AudioProvider audioProvider = new AudioProvider();
+    private VolumeLabel volumeLabel;
 
-    public HideLabel(MainPanel mainPanel, JFrame frame, JPanel footerPanel) {
+    public HideLabel(MainPanel mainPanel, JFrame frame, JPanel footerPanel, VolumeLabel volumeLabel) {
         this.frame = frame;
         this.footerPanel = footerPanel;
         this.mainPanel = mainPanel;
+        this.volumeLabel = volumeLabel;
         this.setIcon(getCommandIcon());
         this.addMouseListener(this);
 
@@ -61,15 +63,18 @@ public class HideLabel extends JLabel implements MouseListener {
             this.isHidden = false;
             this.setIcon(getCommandIcon());
         }
-        try {
-            audioProvider.makeSound("audio/select.wav");
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
-        } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
-            unsupportedAudioFileException.printStackTrace();
-        } catch (LineUnavailableException lineUnavailableException) {
-            lineUnavailableException.printStackTrace();
+        if (this.volumeLabel.isMuted == false) {
+            try {
+                audioProvider.makeSound("audio/select.wav");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+                unsupportedAudioFileException.printStackTrace();
+            } catch (LineUnavailableException lineUnavailableException) {
+                lineUnavailableException.printStackTrace();
+            }
         }
+
     }
 
     @Override
@@ -80,16 +85,17 @@ public class HideLabel extends JLabel implements MouseListener {
     public void mouseEntered(MouseEvent e) {
         this.setOpaque(true);
         this.setBackground(new Color(179, 128, 255));
-        try {
-            audioProvider.makeSound("audio/scroll.wav");
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
-        } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
-            unsupportedAudioFileException.printStackTrace();
-        } catch (LineUnavailableException lineUnavailableException) {
-            lineUnavailableException.printStackTrace();
+        if (this.volumeLabel.isMuted == false) {
+            try {
+                audioProvider.makeSound("audio/scroll.wav");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+                unsupportedAudioFileException.printStackTrace();
+            } catch (LineUnavailableException lineUnavailableException) {
+                lineUnavailableException.printStackTrace();
+            }
         }
-
     }
 
     @Override

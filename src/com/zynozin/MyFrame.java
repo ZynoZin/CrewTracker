@@ -16,9 +16,12 @@ public class MyFrame extends JFrame {
     private Image image = mainIcon.getImage();
     private Image mainImage = image.getScaledInstance(500, 500, Image.SCALE_SMOOTH);
     private FooterPanel footerPanel = new FooterPanel(WIDTH, this, mainPanel);
-    private BarPanel barPanel = new BarPanel(this, footerPanel.commandPanel.resetPositions.mainPanel, this.footerPanel);
+    public BarPanel barPanel = new BarPanel(this, footerPanel.commandPanel.resetPositions.mainPanel, this.footerPanel);
 
     public MyFrame() {
+        footerPanel.commandPanel.resetPositions.setVolumeLabel(barPanel.commandBarPanel.volumeLabel);
+        mainPanel = CommandLabel.mainPanel;
+        footerPanel.commandPanel.clearNotes.setVolumeLabel(barPanel.commandBarPanel.volumeLabel);
         this.addMouseListener(frameDragListener);
         this.addMouseMotionListener(frameDragListener);
         this.setLayout(new BorderLayout());

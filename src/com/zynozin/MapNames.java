@@ -41,14 +41,16 @@ public class MapNames extends JLabel implements MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
         this.setBackground(new Color(143, 0, 179));
-        try {
-            audioProvider.makeSound("audio/select.wav");
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
-        } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
-            unsupportedAudioFileException.printStackTrace();
-        } catch (LineUnavailableException lineUnavailableException) {
-            lineUnavailableException.printStackTrace();
+        if (CommandBarPanel.volumeLabel.isMuted == false) {
+            try {
+                audioProvider.makeSound("audio/select.wav");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+                unsupportedAudioFileException.printStackTrace();
+            } catch (LineUnavailableException lineUnavailableException) {
+                lineUnavailableException.printStackTrace();
+            }
         }
         if (this.title == "Skeld") {
             this.mapDisplay.setVisible(true);
@@ -71,14 +73,16 @@ public class MapNames extends JLabel implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent e) {
         this.setBackground(new Color(245, 204, 255));
-        try {
-            audioProvider.makeSound("audio/scroll.wav");
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
-        } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
-            unsupportedAudioFileException.printStackTrace();
-        } catch (LineUnavailableException lineUnavailableException) {
-            lineUnavailableException.printStackTrace();
+        if (CommandBarPanel.volumeLabel.isMuted == false) {
+            try {
+                audioProvider.makeSound("audio/scroll.wav");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+                unsupportedAudioFileException.printStackTrace();
+            } catch (LineUnavailableException lineUnavailableException) {
+                lineUnavailableException.printStackTrace();
+            }
         }
     }
 

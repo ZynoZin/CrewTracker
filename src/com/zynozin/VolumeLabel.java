@@ -8,17 +8,24 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 
-public class CloseLabel extends JLabel implements MouseListener {
-    private JFrame frame;
-    private ImageIcon closeIcon = new ImageIcon("images/close.png");
+public class VolumeLabel extends JLabel implements MouseListener {
+    private ImageIcon volumeUpIcon = new ImageIcon("images/volumeUp.png");
+    private ImageIcon volumeDownIcon = new ImageIcon("images/volumeDown.png");
     private AudioProvider audioProvider = new AudioProvider();
-    private VolumeLabel volumeLabel;
+    public Boolean isMuted = false;
 
-    public CloseLabel(JFrame frame, VolumeLabel volumeLabel) {
-        this.frame = frame;
-        this.volumeLabel = volumeLabel;
-        this.setIcon(closeIcon);
+    public VolumeLabel() {
+        this.setIcon(getVolumeIcon());
         this.addMouseListener(this);
+    }
+
+    private ImageIcon getVolumeIcon() {
+        ImageIcon icon;
+        if (!isMuted)
+            icon = volumeUpIcon;
+        else
+            icon = volumeDownIcon;
+        return icon;
     }
 
     @Override
@@ -28,10 +35,15 @@ public class CloseLabel extends JLabel implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.dispose();
-        System.exit(0);
+        if (!isMuted) {
+            this.isMuted = true;
+            this.setIcon(getVolumeIcon());
+        } else {
+            this.isMuted = false;
+            this.setIcon(getVolumeIcon());
+        }
     }
+
 
     @Override
     public void mouseReleased(MouseEvent e) {
@@ -40,8 +52,8 @@ public class CloseLabel extends JLabel implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent e) {
         this.setOpaque(true);
-        this.setBackground(Color.RED);
-        if (this.volumeLabel.isMuted == false)
+        this.setBackground(new Color(179, 128, 255));
+        if (this.isMuted == false) {
             try {
                 audioProvider.makeSound("audio/scroll.wav");
             } catch (IOException ioException) {
@@ -51,6 +63,9 @@ public class CloseLabel extends JLabel implements MouseListener {
             } catch (LineUnavailableException lineUnavailableException) {
                 lineUnavailableException.printStackTrace();
             }
+        }
+
+
     }
 
     @Override
@@ -58,3 +73,4 @@ public class CloseLabel extends JLabel implements MouseListener {
         this.setBackground(new Color(77, 0, 153));
     }
 }
+

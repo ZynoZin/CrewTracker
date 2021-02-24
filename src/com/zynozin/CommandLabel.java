@@ -18,12 +18,15 @@ public class CommandLabel extends JLabel implements MouseListener {
     private final int HEIGHT = 900;
     private NotesArea notesArea;
     private AudioProvider audioProvider = new AudioProvider();
+    private VolumeLabel volumeLabel;
+    private BarPanel barPanel;
 
     public CommandLabel(String title, JFrame frame, MainPanel mainPanel, NotesArea notesArea) {
         this.notesArea = notesArea;
         this.title = title;
         this.frame = frame;
         this.mainPanel = mainPanel;
+        this.volumeLabel = getVolumeLabel();
         this.setText(title);
         this.setFont(new Font("Pink Chicken", Font.PLAIN, 20));
         this.setForeground(Color.white);
@@ -33,10 +36,20 @@ public class CommandLabel extends JLabel implements MouseListener {
         this.addMouseListener(this);
         this.setBorder(BorderFactory.createLineBorder(new Color(230, 179, 255), 5));
         this.setBackground(new Color(213, 128, 255));
+
     }
 
     public static void setMainPanel(MainPanel mainPanel) {
+
         CommandLabel.mainPanel = mainPanel;
+    }
+
+    public void setVolumeLabel(VolumeLabel volumeLabel) {
+        this.volumeLabel = volumeLabel;
+    }
+
+    public VolumeLabel getVolumeLabel() {
+        return volumeLabel;
     }
 
     @Override
@@ -55,15 +68,18 @@ public class CommandLabel extends JLabel implements MouseListener {
         } else if (this.title == "Clear Notes") {
             this.notesArea.setText("");
         }
-        try {
-            audioProvider.makeSound("audio/select.wav");
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
-        } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
-            unsupportedAudioFileException.printStackTrace();
-        } catch (LineUnavailableException lineUnavailableException) {
-            lineUnavailableException.printStackTrace();
+        if (this.volumeLabel.isMuted == false) {
+            try {
+                audioProvider.makeSound("audio/select.wav");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+                unsupportedAudioFileException.printStackTrace();
+            } catch (LineUnavailableException lineUnavailableException) {
+                lineUnavailableException.printStackTrace();
+            }
         }
+
     }
 
     @Override
@@ -74,14 +90,16 @@ public class CommandLabel extends JLabel implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent e) {
         this.setBackground(new Color(245, 204, 255));
-        try {
-            audioProvider.makeSound("audio/scroll.wav");
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
-        } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
-            unsupportedAudioFileException.printStackTrace();
-        } catch (LineUnavailableException lineUnavailableException) {
-            lineUnavailableException.printStackTrace();
+        if (this.volumeLabel.isMuted == false) {
+            try {
+                audioProvider.makeSound("audio/scroll.wav");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+                unsupportedAudioFileException.printStackTrace();
+            } catch (LineUnavailableException lineUnavailableException) {
+                lineUnavailableException.printStackTrace();
+            }
         }
     }
 
