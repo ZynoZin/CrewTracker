@@ -15,7 +15,7 @@ public class NotesArea extends JTextArea {
         this.setWrapStyleWord(true);
         this.setForeground(Color.white);
         this.setFont(font);
-        this.setBackground(new Color(31, 0, 77));
+        this.setBackground(new Color(20, 20, 20));
         this.setCaretColor(Color.white);
     }
 }

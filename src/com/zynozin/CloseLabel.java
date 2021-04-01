@@ -55,6 +55,6 @@ public class CloseLabel extends JLabel implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
-        this.setBackground(new Color(77, 0, 153));
+        this.setBackground(new Color(41, 41, 41));
     }
 }

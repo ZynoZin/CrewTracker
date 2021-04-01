@@ -35,6 +35,7 @@ public class VolumeLabel extends JLabel implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
+        this.setBackground(new Color(0, 0, 0));
         if (!isMuted) {
             this.isMuted = true;
             this.setIcon(getVolumeIcon());
@@ -52,7 +53,7 @@ public class VolumeLabel extends JLabel implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent e) {
         this.setOpaque(true);
-        this.setBackground(new Color(179, 128, 255));
+        this.setBackground(new Color(90, 90, 90));
         if (this.isMuted == false) {
             try {
                 audioProvider.makeSound("audio/scroll.wav");
@@ -70,7 +71,7 @@ public class VolumeLabel extends JLabel implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
-        this.setBackground(new Color(77, 0, 153));
+        this.setBackground(new Color(41, 41, 41));
     }
 }
 

@@ -16,7 +16,7 @@ public class CommandBarPanel extends JPanel {
         closeLabel = new CloseLabel(this.frame, volumeLabel);
         hideLabel = new HideLabel(this.mainPanel, this.frame, footerPanel, volumeLabel);
         this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-        this.setBackground(new Color(77, 0, 153));
+        this.setBackground(new Color(41, 41, 41));
         this.add(hideLabel);
         this.add(volumeLabel);
         this.add(closeLabel);

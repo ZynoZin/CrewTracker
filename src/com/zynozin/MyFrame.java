@@ -29,7 +29,8 @@ public class MyFrame extends JFrame {
         this.add(mainPanel, BorderLayout.CENTER);
         this.add(footerPanel, BorderLayout.SOUTH);
         this.setUndecorated(true);
-        this.setBackground(new Color(140, 26, 255, 100));
+        this.getRootPane().setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
+        this.setBackground(new Color(41, 41, 41, 100));
         this.setSize(WIDTH, HEIGHT);
         this.setLocationRelativeTo(null);
         this.setFocusable(true);

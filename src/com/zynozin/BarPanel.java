@@ -15,8 +15,9 @@ public class BarPanel extends JPanel {
         this.setLayout(new BorderLayout());
         this.add(commandBarPanel, BorderLayout.EAST);
         this.add(titleLabel, BorderLayout.WEST);
+        this.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
         this.setPreferredSize(new Dimension(WIDTH, 35));
-        this.setBackground(new Color(77, 0, 153));
+        this.setBackground(new Color(41, 41, 41));
     }
 
 

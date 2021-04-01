@@ -34,8 +34,8 @@ public class CommandLabel extends JLabel implements MouseListener {
         this.setPreferredSize(new Dimension(150, 60));
         this.setHorizontalAlignment(SwingConstants.CENTER);
         this.addMouseListener(this);
-        this.setBorder(BorderFactory.createLineBorder(new Color(230, 179, 255), 5));
-        this.setBackground(new Color(213, 128, 255));
+        this.setBorder(BorderFactory.createLineBorder(new Color(92, 92, 92), 5));
+        this.setBackground(new Color(41, 41, 41));
 
     }
 
@@ -59,7 +59,7 @@ public class CommandLabel extends JLabel implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        this.setBackground(new Color(143, 0, 179));
+        this.setBackground(new Color(0, 0, 0));
         if (this.title == "Reset Positions") {
             this.mainPanel.setVisible(false);
             MainPanel mainPanel = new MainPanel(WIDTH, HEIGHT - 200);
@@ -89,7 +89,7 @@ public class CommandLabel extends JLabel implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        this.setBackground(new Color(245, 204, 255));
+        this.setBackground(new Color(75, 75, 75));
         if (this.volumeLabel.isMuted == false) {
             try {
                 audioProvider.makeSound("audio/scroll.wav");
@@ -105,6 +105,6 @@ public class CommandLabel extends JLabel implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
-        this.setBackground(new Color(213, 128, 255));
+        this.setBackground(new Color(41, 41, 41));
     }
 }

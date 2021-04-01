@@ -15,6 +15,7 @@ public class MapNames extends JLabel implements MouseListener {
     private ImageIcon skeldIcon = new ImageIcon("images/skeldMap.png");
     private ImageIcon polusIcon = new ImageIcon("images/polusMap.png");
     private ImageIcon mirahIcon = new ImageIcon("images/mirahMap.png");
+    private ImageIcon airshipIcon = new ImageIcon("images/airship.png");
     private AudioProvider audioProvider = new AudioProvider();
     private Font font = Main.getFontforApp(35f);
 
@@ -29,8 +30,8 @@ public class MapNames extends JLabel implements MouseListener {
         this.setPreferredSize(new Dimension(100, 60));
         this.setHorizontalAlignment(SwingConstants.CENTER);
         this.addMouseListener(this);
-        this.setBorder(BorderFactory.createLineBorder(new Color(230, 179, 255), 5));
-        this.setBackground(new Color(213, 128, 255));
+        this.setBorder(BorderFactory.createLineBorder(new Color(92, 92, 92), 5));
+        this.setBackground(new Color(41, 41, 41));
     }
 
 
@@ -41,7 +42,7 @@ public class MapNames extends JLabel implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        this.setBackground(new Color(143, 0, 179));
+        this.setBackground(new Color(0, 0, 0));
         if (CommandBarPanel.volumeLabel.isMuted == false) {
             try {
                 audioProvider.makeSound("audio/select.wav");
@@ -53,16 +54,19 @@ public class MapNames extends JLabel implements MouseListener {
                 lineUnavailableException.printStackTrace();
             }
         }
-        if (this.title == "Skeld") {
+        if (this.title.equals("Skeld")) {
             this.mapDisplay.setVisible(true);
             this.mapDisplay.setIcon(skeldIcon);
 
-        } else if (this.title == "Polus") {
+        } else if (this.title.equals("Polus")) {
             this.mapDisplay.setVisible(true);
             this.mapDisplay.setIcon(polusIcon);
-        } else if (this.title == "Mirah") {
+        } else if (this.title.equals("Mirah")) {
             this.mapDisplay.setVisible(true);
             this.mapDisplay.setIcon(mirahIcon);
+        } else if (this.title.equals("Airship")) {
+            this.mapDisplay.setVisible(true);
+            this.mapDisplay.setIcon(airshipIcon);
         }
     }
 
@@ -73,7 +77,7 @@ public class MapNames extends JLabel implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        this.setBackground(new Color(245, 204, 255));
+        this.setBackground(new Color(75, 75, 75));
         if (CommandBarPanel.volumeLabel.isMuted == false) {
             try {
                 audioProvider.makeSound("audio/scroll.wav");
@@ -89,6 +93,6 @@ public class MapNames extends JLabel implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
-        this.setBackground(new Color(213, 128, 255));
+        this.setBackground(new Color(41, 41, 41));
     }
 }

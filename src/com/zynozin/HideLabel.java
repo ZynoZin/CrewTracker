@@ -48,18 +48,20 @@ public class HideLabel extends JLabel implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-
+        this.setBackground(new Color(0, 0, 0));
         if (!this.isHidden) {
             setMainPanel(CommandLabel.mainPanel);
             this.mainPanel.setVisible(false);
             this.footerPanel.setVisible(false);
-            this.frame.setBackground(new Color(140, 26, 255, 0));
+            this.frame.setBackground(new Color(41, 41, 41, 0));
+            this.frame.getRootPane().setBorder(null);
             this.isHidden = true;
             this.setIcon(getCommandIcon());
         } else {
             this.mainPanel.setVisible(true);
             this.footerPanel.setVisible(true);
-            this.frame.setBackground(new Color(140, 26, 255, 100));
+            this.frame.setBackground(new Color(41, 41, 41, 100));
+            this.frame.getRootPane().setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
             this.isHidden = false;
             this.setIcon(getCommandIcon());
         }
@@ -84,7 +86,7 @@ public class HideLabel extends JLabel implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent e) {
         this.setOpaque(true);
-        this.setBackground(new Color(179, 128, 255));
+        this.setBackground(new Color(90, 90, 90));
         if (this.volumeLabel.isMuted == false) {
             try {
                 audioProvider.makeSound("audio/scroll.wav");
@@ -100,7 +102,7 @@ public class HideLabel extends JLabel implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
-        this.setBackground(new Color(77, 0, 153));
+        this.setBackground(new Color(41, 41, 41));
     }
 }
 
